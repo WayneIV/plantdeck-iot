@@ -1,0 +1,19 @@
+# Python development artifacts
+.venv/
+__pycache__/
+*.py[cod]
+*.pyo
+.env
+.env.*
+.mypy_cache/
+.pytest_cache/
+
+# Node.js artifacts
+node_modules/
+dist/
+build/
+coverage/
+
+# Other
+*.zip
+.DS_Store
