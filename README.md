@@ -2,14 +2,41 @@
 
 Smart Plant Monitoring and Automation System.
 
-## Camera Service
+## Services
 
-The `camera_service` captures images using OpenCV and analyzes foliage health. Based on the analysis it sends commands to the actuator service to adjust watering automatically.
+- **camera_service** - Captures images using OpenCV and analyses green foliage levels.
+- **plant_identifier_service** - Uses the Plant.id API to identify plants from images. Set `PLANT_ID_API_KEY` to use it.
+- **sensor_service** - Provides soil moisture readings via `/api/sensors`.
+- **actuator_service** - Receives watering commands via `/api/actuators`.
+- **automation_service** - Polls sensors and triggers actuators based on moisture and identification results.
 
-## Plant Identifier Service
+## Quick Start
 
-The `plant_identifier_service` uses the online Plant.id API to identify plant species from captured images. Set the `PLANT_ID_API_KEY` environment variable to use this service.
+1. Install Python dependencies:
 
-## Automation Service
+```bash
+pip install -r requirements.txt
+```
 
-The `automation_service` coordinates sensors, plant identification, and actuators to maintain optimal conditions.
+2. Start the mock hardware services in separate terminals:
+
+```bash
+python software/services/sensor_service/server.py
+python software/services/actuator_service/server.py
+```
+
+3. Run the automation controller:
+
+```bash
+PLANT_ID_API_KEY=your-key python software/services/automation_service/automation.py
+```
+
+4. (Optional) Run the web interface:
+
+```bash
+cd web
+npm install
+npm test
+```
+
+The automation service will periodically read moisture data and command the actuator service to turn watering on or off.
