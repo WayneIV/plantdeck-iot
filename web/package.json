@@ -1,0 +1,17 @@
+{
+  "name": "plant-ai-web",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "test": "jest"
+  },
+  "dependencies": {
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "@tensorflow/tfjs": "^4.10.0",
+    "@tensorflow/tfjs-tflite": "^0.0.1-alpha.10"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}
