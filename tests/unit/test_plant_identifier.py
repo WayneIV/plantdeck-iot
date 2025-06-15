@@ -1,9 +1,20 @@
 import builtins
 from unittest import mock
 
+import pathlib
+import sys
+
 import pytest
 
-from software.services.plant_identifier_service.plant_identifier import PlantIdentifier, PlantIdentifierConfig
+# Ensure project root is on sys.path for imports
+ROOT = pathlib.Path(__file__).resolve().parents[2]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+from software.services.plant_identifier_service.plant_identifier import (
+    PlantIdentifier,
+    PlantIdentifierConfig,
+)
 
 
 def test_identify_makes_request(tmp_path):
